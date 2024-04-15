@@ -2,6 +2,25 @@
 # TODO: Write my_attr_writer
 # TODO: Write my_attr_accessor, preferably using my_attr_reader and my_attr_writer
 
+class Class
+  def my_attr_reader(*names)
+    names.each do |name|
+      define_method(name) { instance_variable_get("@#{name}") }
+    end
+  end
+
+  def my_attr_writer(*names)
+    names.each do |name|
+      define_method("#{name}=") { |value| instance_variable_set("@#{name}", value) }
+    end
+  end
+
+  def my_attr_accessor(*names)
+    my_attr_reader(*names)
+    my_attr_writer(*names)
+  end
+end
+
 class Singer
   # TODO: Change to my_attr_writer
   attr_writer :first_name

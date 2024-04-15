@@ -13,9 +13,12 @@ every class object an instance of?
 Try to find out in `irb`: take a class
 like `String`, and find out its class (which method do you think we need for this?).
 
+***An instance of Class***
+
 ### Exercise 1.2
 
 Figure out the superclass of the class you found in exercise 1.1.
+***The superClass is Module***
 
 ### Exercise 1.3
 
@@ -49,6 +52,8 @@ Here are some pointers to help you get started:
   [`instance_variable_get`](https://ruby-doc.org/3.3.0/Object.html#method-i-instance_variable_get),
   and [`instance_variable_set`](https://ruby-doc.org/3.3.0/Object.html#method-i-instance_variable_set)
   methods.
+
+  ***Done***
 
 ## 2. Creating a simple XML-generating DSL
 
