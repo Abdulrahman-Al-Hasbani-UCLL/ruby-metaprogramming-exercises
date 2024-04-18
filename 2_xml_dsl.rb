@@ -1,7 +1,7 @@
 class XmlWriter
   def initialize
-    @xml = ""
-    @indentation_level = 0
+    @xml = "" #de uiteindelijke xml string
+    @indentation_level = 0 #hoe diep zitten we in de xml structuur
   end
 
   def to_s
@@ -13,8 +13,15 @@ class XmlWriter
   end
 
   private def method_missing(tag_name, *args, &block)
-    # TODO: implement method_missing, you can either assume that a block was given,
-    #       or that args contains a single string argument
+    if block_given?
+      @xml << "#{indent}<#{tag_name}>\n"
+      @indentation_level += 1
+      instance_eval(&block)
+      @indentation_level -= 1
+      @xml << "#{indent}</#{tag_name}>\n"
+    else
+      @xml << "#{indent}<#{tag_name}>#{args.join("")}</#{tag_name}>\n"
+    end
   end
 end
 
